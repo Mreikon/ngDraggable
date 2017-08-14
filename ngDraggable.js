@@ -146,7 +146,10 @@ angular.module("ngDraggable", [])
                     if(allowTransform)
                         _dragOffset = offset;
                     else{
-                        _dragOffset = {left:document.body.scrollLeft, top:document.body.scrollTop};
+						//document.body.scrollTop/Left is deprecated in Firefox/IE
+                        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0; 
+						var scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+                        _dragOffset = {left: scrollLeft, top: scrollTop};
                     }
 
 
