@@ -202,8 +202,8 @@ angular.module("ngDraggable", [])
                         _tx = _mx - element.centerX - _dragOffset.left;
                         _ty = _my - element.centerY - _dragOffset.top;
                     } else {
-                        _tx = _mx - _mrx - _dragOffset.left;
-                        _ty = _my - _mry - _dragOffset.top;
+                        _tx = _mrx - _dragOffset.left;
+                        _ty = _mry - _dragOffset.top;
                     }
 
                     if(allowTransform)
@@ -353,6 +353,7 @@ angular.module("ngDraggable", [])
 
                         if (attrs.ngDropSuccess) {
                             $timeout(function(){
+                                obj.droppedAtElement = element;
                                 onDropCallback(scope, {$data: obj.data, $event: obj, $target: scope.$eval(scope.value)});
                             });
                         }
